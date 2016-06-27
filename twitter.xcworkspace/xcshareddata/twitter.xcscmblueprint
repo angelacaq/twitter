@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CAA054D10A535E92C96876C5625A985F3594AE5B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "77769D796CEEC9B9E7F7232BCCC23F97B9E3B55E" : 0,
+    "CAA054D10A535E92C96876C5625A985F3594AE5B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D5455945-6CD6-4B0E-BB1A-D7154FAA66A5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "77769D796CEEC9B9E7F7232BCCC23F97B9E3B55E" : "",
+    "CAA054D10A535E92C96876C5625A985F3594AE5B" : "twitter\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "twitter",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "twitter.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:angelacaq\/-FBU-Project-1-Tipsy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "77769D796CEEC9B9E7F7232BCCC23F97B9E3B55E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/angelacaq\/twitter.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CAA054D10A535E92C96876C5625A985F3594AE5B"
+    }
+  ]
+}

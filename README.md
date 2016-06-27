@@ -8,8 +8,8 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] User can sign in using OAuth login flow
-- [ ] The current signed in user will be persisted across restarts
+- [X] User can sign in using OAuth login flow
+- [X] The current signed in user will be persisted across restarts
 - [ ] User can view last 20 tweets from their home timeline
 - [ ] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
 - [ ] User can pull to refresh.
@@ -33,7 +33,7 @@ The following **optional** features are implemented:
 - [ ] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
 - [ ] User can reply to any tweet, and replies should be prefixed with the username and the reply_id should be set when posting the tweet
 - [ ] Links in tweets are clickable
-- [ ] User can switch between timeline, mentions, or profile view through a tab bar
+- [X] User can switch between timeline, mentions, or profile view through a tab bar
 - [ ] Pulling down the profile page should blur and resize the header image.
 
 The following **additional** features are implemented:

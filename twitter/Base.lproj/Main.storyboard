@@ -1,25 +1,179 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EER-I1-1Tp">
+                                <rect key="frame" x="48" y="385" width="279" height="50"/>
+                                <color key="backgroundColor" red="0.090629571743398363" green="0.63917822112349754" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="z9y-HP-bf9"/>
+                                </constraints>
+                                <state key="normal" title="Log in with Twitter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYB-OL-HHN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EER-I1-1Tp" secondAttribute="bottom" constant="232" id="AJc-oi-Nuw"/>
+                            <constraint firstItem="EER-I1-1Tp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="32" id="cOb-Vc-4SS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EER-I1-1Tp" secondAttribute="trailing" constant="32" id="eym-aa-iiQ"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="t5I-QX-ss8" kind="presentation" identifier="loginSegue" id="6zF-cM-mAe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-296.5" y="153.5"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Gci-B4-IcS">
+            <objects>
+                <tabBarController storyboardIdentifier="TweetsTabBar" id="t5I-QX-ss8" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="CMW-7v-k0b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="pVm-wp-jZd" kind="relationship" relationship="viewControllers" id="MHW-gN-I7l"/>
+                        <segue destination="slA-0u-8GL" kind="relationship" relationship="viewControllers" id="wPu-af-MNq"/>
+                        <segue destination="JpI-t6-RQK" kind="relationship" relationship="viewControllers" id="Pym-V2-Mvy"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zc5-zF-u8C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258.5" y="1027.5"/>
+        </scene>
+        <!--Me-->
+        <scene sceneID="WPl-PV-UY9">
+            <objects>
+                <viewController id="JpI-t6-RQK" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eYQ-Dv-8WS"/>
+                        <viewControllerLayoutGuide type="bottom" id="PbX-t0-vIp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BnV-cY-2pi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Me" image="user" id="joR-5I-PZj"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Oe-Wd-hkc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258.5" y="1811.5"/>
+        </scene>
+        <!--Mentions-->
+        <scene sceneID="DKb-cW-gts">
+            <objects>
+                <viewController id="slA-0u-8GL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6VE-CP-acE"/>
+                        <viewControllerLayoutGuide type="bottom" id="cOY-lL-WFl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pgn-M3-pc9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Mentions" image="bell" id="3Tw-X2-SVn"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MYI-Xn-Ynz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="754.5" y="1033.5"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="QqJ-ha-RDl">
+            <objects>
+                <viewController id="ajO-Da-wg6" customClass="TweetsViewController" customModule="twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Ni-n5-d6U"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cze-WR-4bz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eaE-eA-t3N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ucB-NL-iLo">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ucB-NL-iLo" firstAttribute="leading" secondItem="eaE-eA-t3N" secondAttribute="leadingMargin" constant="-20" id="0Ci-G4-F3i"/>
+                            <constraint firstItem="ucB-NL-iLo" firstAttribute="top" secondItem="eaE-eA-t3N" secondAttribute="topMargin" id="QR5-6z-j93"/>
+                            <constraint firstItem="Cze-WR-4bz" firstAttribute="top" secondItem="ucB-NL-iLo" secondAttribute="bottom" id="U58-qO-IhB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ucB-NL-iLo" secondAttribute="trailing" constant="-20" id="eb5-wh-lkh"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="twitterhome" id="swT-J6-EW7"/>
+                    <navigationItem key="navigationItem" id="XSb-ew-bhJ">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ppx-M6-diB">
+                            <connections>
+                                <action selector="onLogoutButton:" destination="ajO-Da-wg6" id="fqO-WG-MN4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="ucB-NL-iLo" id="Zxo-BK-0wo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NMc-gV-Aqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734.5" y="153.5"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="brn-rk-Qr9">
+            <objects>
+                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="pVm-wp-jZd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="jw3-Cf-Ffa"/>
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sz7-LF-0Ri">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ajO-Da-wg6" kind="relationship" relationship="rootViewController" id="bVL-e0-dh5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LXJ-0u-1xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="259" y="153"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bell" width="24" height="24"/>
+        <image name="twitterhome" width="24" height="24"/>
+        <image name="user" width="24" height="24"/>
+    </resources>
 </document>
