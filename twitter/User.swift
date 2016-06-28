@@ -24,10 +24,12 @@ class User: NSObject {
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
         
-        let profileURLString = dictionary["profile_image_url_https"] as? String
-        if let profileURLString = profileURLString {
+        let smallPhoto = dictionary["profile_image_url_https"] as? String
+        let profileURLString = smallPhoto!.stringByReplacingOccurrencesOfString("_normal", withString: "")
+        //if let profileURLString = profileURLString {
             profileURL = NSURL(string: profileURLString)
-        }
+            print(profileURLString)
+        //}
         
         tagline = dictionary["description"] as? String
     }

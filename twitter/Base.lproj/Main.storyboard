@@ -167,12 +167,13 @@
                                                     <rect key="frame" x="246" y="114" width="16" height="21"/>
                                                     <state key="normal" title="Heart Button" image="heart1small"/>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOb-HZ-B9Y">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyV-QT-RMt">
+                                                    <rect key="frame" x="18" y="8" width="73" height="74"/>
+                                                    <state key="normal" image="egg"/>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOb-HZ-B9Y">
                                                     <rect key="frame" x="18" y="8" width="73" height="74"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyV-QT-RMt">
-                                                    <rect key="frame" x="18" y="7" width="73" height="73"/>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="pJL-EG-lUs" firstAttribute="top" secondItem="ngU-t2-ScN" secondAttribute="topMargin" id="RKh-bh-uV5"/>
@@ -239,6 +240,7 @@
     </scenes>
     <resources>
         <image name="bell" width="24" height="24"/>
+        <image name="egg" width="250" height="250"/>
         <image name="heart1small" width="27" height="36"/>
         <image name="retweet1small" width="38" height="36"/>
         <image name="sharesmall" width="33" height="36"/>

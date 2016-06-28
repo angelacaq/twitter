@@ -27,18 +27,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.insertSubview(refreshControl, atIndex: 0)
         
         query()
-
-        /*TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) in
-            
-            self.tweets = tweets
-            
-            // Reload the tableView now that there is new data
-            self.tableView.reloadData()
-            
-            
-        }) { (error: NSError) in
-                print(error.localizedDescription)
-        }*/
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,10 +52,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.timestampLabel.text = timestamp
         
         if let url = tweet.user!.profileURL {
-            cell.avatarButton.setBackgroundImageForState(UIControlState.Normal, withURL: url)
+            if let imageView = cell.avatarImage {
+                imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            }
             
-            //setImageForState(UIControlState.Normal, withURL: url)
-            //cell.avatarButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
+            cell.avatarImage.setImageWithURL(url)
         }
         
         return cell
