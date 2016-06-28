@@ -61,6 +61,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.avatarImage.setImageWithURL(url)
         }
         
+        if tweet.retweetCount > 0 {
+            cell.retweetCountLabel.text = String(tweet.retweetCount)
+        } else {
+            cell.retweetCountLabel.text = ""
+        }
+        
+        if tweet.favoriteCount > 0 {
+            cell.favoriteCountLabel.text = String(tweet.favoriteCount)
+        } else {
+            cell.favoriteCountLabel.text = ""
+        }
+        
         return cell
     }
 

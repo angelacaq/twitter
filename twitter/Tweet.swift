@@ -35,7 +35,7 @@ class Tweet: NSObject {
         user = User(dictionary: userDictionary)
         
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
-        favoriteCount = (dictionary["favorites_count"] as? Int) ?? 0
+        favoriteCount = (dictionary["favorite_count"] as? Int) ?? 0
     }
     
     class func timestampConverter(date1: NSDate, date2: NSDate) -> String {

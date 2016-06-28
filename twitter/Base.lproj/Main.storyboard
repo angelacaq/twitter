@@ -192,7 +192,7 @@
                                                     <state key="normal" title="Heart Button" image="heart1small"/>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fOb-HZ-B9Y">
-                                                    <rect key="frame" x="16" y="8" width="50" height="50"/>
+                                                    <rect key="frame" x="16" y="10" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="5SA-M4-sPb"/>
                                                         <constraint firstAttribute="width" constant="50" id="gdh-FU-Ckm"/>
@@ -217,7 +217,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="screen name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJL-EG-lUs">
-                                                    <rect key="frame" x="76" y="8" width="91.5" height="18"/>
+                                                    <rect key="frame" x="75.5" y="8" width="92" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -230,10 +230,10 @@
                                                 <constraint firstItem="HDO-L1-mTG" firstAttribute="top" secondItem="pJL-EG-lUs" secondAttribute="top" id="5J8-rO-qab"/>
                                                 <constraint firstItem="HDO-L1-mTG" firstAttribute="leading" secondItem="pJL-EG-lUs" secondAttribute="trailing" constant="5" id="66t-j3-uer"/>
                                                 <constraint firstItem="HDO-L1-mTG" firstAttribute="centerY" secondItem="pJL-EG-lUs" secondAttribute="centerY" id="7p3-P1-mvW"/>
-                                                <constraint firstItem="pJL-EG-lUs" firstAttribute="top" secondItem="fOb-HZ-B9Y" secondAttribute="top" id="80k-iD-xOf"/>
+                                                <constraint firstItem="pJL-EG-lUs" firstAttribute="top" secondItem="fOb-HZ-B9Y" secondAttribute="top" constant="-2" id="80k-iD-xOf"/>
                                                 <constraint firstItem="s2w-cg-DDd" firstAttribute="top" secondItem="pJL-EG-lUs" secondAttribute="bottom" constant="1" id="8Y7-L3-wcV"/>
                                                 <constraint firstItem="aJf-47-9NS" firstAttribute="centerY" secondItem="IVj-hk-98T" secondAttribute="centerY" id="93r-6F-0U6"/>
-                                                <constraint firstItem="fOb-HZ-B9Y" firstAttribute="top" secondItem="ngU-t2-ScN" secondAttribute="topMargin" id="9gw-4X-nFo"/>
+                                                <constraint firstItem="fOb-HZ-B9Y" firstAttribute="top" secondItem="ngU-t2-ScN" secondAttribute="topMargin" constant="2" id="9gw-4X-nFo"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="fqP-xH-jbN" secondAttribute="bottom" constant="3.5" id="Agk-fl-Y2j"/>
                                                 <constraint firstItem="ZRF-3G-hm5" firstAttribute="bottom" secondItem="pJL-EG-lUs" secondAttribute="bottom" id="Eha-KI-2W2"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="KAG-yk-BDw" secondAttribute="bottom" constant="3.5" id="HGo-2E-rTQ"/>
@@ -269,6 +269,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarImage" destination="fOb-HZ-B9Y" id="SMR-k0-ovb"/>
+                                            <outlet property="favoriteCountLabel" destination="aJf-47-9NS" id="OEX-Tt-3rr"/>
+                                            <outlet property="retweetCountLabel" destination="XcV-tq-JK2" id="hKs-6J-jGt"/>
                                             <outlet property="screenameLabel" destination="pJL-EG-lUs" id="SAp-VW-3jm"/>
                                             <outlet property="timestampLabel" destination="ZRF-3G-hm5" id="yqz-LP-lmi"/>
                                             <outlet property="tweetLabel" destination="s2w-cg-DDd" id="W0e-hU-4Py"/>
