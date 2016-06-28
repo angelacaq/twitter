@@ -64,8 +64,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.timestampLabel.text = timestamp
         
         if let url = tweet.user!.profileURL {
-            print(url.absoluteString)
-            cell.avatarButton.imageView?.setImageWithURL(url)
+            cell.avatarButton.setBackgroundImageForState(UIControlState.Normal, withURL: url)
+            
+            //setImageForState(UIControlState.Normal, withURL: url)
+            //cell.avatarButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
         }
         
         return cell
