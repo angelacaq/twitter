@@ -41,6 +41,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetsTableViewCell", forIndexPath: indexPath) as! TweetsTableViewCell
         let tweet = tweets![indexPath.row]
+        cell.avatarButton.tag = indexPath.row
         
         cell.tweetLabel.text = String(tweet.text!)
         
@@ -157,14 +158,21 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "userSegue" {
+            let button = sender as! UIButton
+            let tweet = tweets![button.tag]
+            
+            let userViewController = segue.destinationViewController as! UserViewController
+            userViewController.user = tweet.user
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
