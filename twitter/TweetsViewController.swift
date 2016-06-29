@@ -33,7 +33,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tweets = tweets {
-            print("count \(tweets.count)")
             return tweets.count
         }
         return 0
@@ -67,11 +66,27 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.retweetCountLabel.text = ""
         }
         
+        if tweet.retweeted {
+            cell.retweetButton.setImage(UIImage(named: "retweetgreen1small"), forState: UIControlState.Normal)
+        } else {
+            cell.retweetButton.setImage(UIImage(named: "retweet1small"), forState: UIControlState.Normal)
+        }
+        
+        cell.retweetButton.tag = indexPath.row
+        
         if tweet.favoriteCount > 0 {
             cell.favoriteCountLabel.text = String(tweet.favoriteCount)
         } else {
             cell.favoriteCountLabel.text = ""
         }
+        
+        if tweet.favorited {
+            cell.favoriteButton.setImage(UIImage(named: "heartred1small"), forState: UIControlState.Normal)
+        } else {
+            cell.favoriteButton.setImage(UIImage(named: "heart1small"), forState: UIControlState.Normal)
+        }
+        
+        cell.favoriteButton.tag = indexPath.row
         
         return cell
     }
@@ -81,6 +96,43 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onRetweetButton(sender: AnyObject) {
+        let retweetButton = sender as! UIButton
+        let tweet = tweets![retweetButton.tag]
+        let id = Int(tweet.id)
+        
+        TwitterClient.sharedInstance.retweet(tweet.retweeted, id: id, success: { (retweeted: Bool) in
+            if retweeted {
+                tweet.retweetCount += 1
+                tweet.retweeted = true
+            } else {
+                tweet.retweetCount -= 1
+                tweet.retweeted = false
+            }
+            self.tableView.reloadData()
+        }) { (error: NSError) in
+                print(error.localizedDescription)
+        }
+    }
+    
+    @IBAction func onFavoriteButton(sender: AnyObject) {
+        let favoriteButton = sender as! UIButton
+        let tweet = tweets![favoriteButton.tag]
+        let id = Int(tweet.id)
+        
+        TwitterClient.sharedInstance.favorite(tweet.favorited, id: id, success: { (favorited: Bool) in
+            if favorited {
+                tweet.favoriteCount += 1
+                tweet.favorited = true
+            } else {
+                tweet.favoriteCount -= 1
+                tweet.favorited = false
+            }
+            self.tableView.reloadData()
+        }) { (error: NSError) in
+            print(error.localizedDescription)
+        }
+    }
     @IBAction func onLogoutButton(sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
     }

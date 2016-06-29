@@ -26,10 +26,7 @@ class User: NSObject {
         
         let smallPhoto = dictionary["profile_image_url_https"] as? String
         let profileURLString = smallPhoto!.stringByReplacingOccurrencesOfString("_normal", withString: "")
-        //if let profileURLString = profileURLString {
-            profileURL = NSURL(string: profileURLString)
-            print(profileURLString)
-        //}
+        profileURL = NSURL(string: profileURLString)
         
         tagline = dictionary["description"] as? String
     }

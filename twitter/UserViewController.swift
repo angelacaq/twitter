@@ -1,15 +1,26 @@
 //
-//  LoginViewController.swift
+//  UserViewController.swift
 //  twitter
 //
-//  Created by Angela Chen on 6/27/16.
+//  Created by Angela Chen on 6/29/16.
 //  Copyright © 2016 Angela Chen. All rights reserved.
 //
 
 import UIKit
-import BDBOAuth1Manager
 
-class LoginViewController: UIViewController {
+class UserViewController: UIViewController {
+    
+    var user:User?
+    
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var screennameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var followingCountLabel: UILabel!
+    @IBOutlet weak var followerCountLabel: UILabel!
+    @IBOutlet weak var tweetCountLabel: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +32,6 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func onLogIn(sender: AnyObject) {
-        TwitterClient.sharedInstance.login({
-            self.performSegueWithIdentifier("loginSegue", sender: nil)
-        }) { (error: NSError) in
-            print("error: \(error.localizedDescription)")
-        }
-    }
-    
     
 
     /*

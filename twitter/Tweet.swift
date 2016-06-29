@@ -16,6 +16,9 @@ class Tweet: NSObject {
     var user: User?
     var retweetCount: Int = 0
     var favoriteCount: Int = 0
+    var retweeted: Bool = false
+    var favorited: Bool = false
+    var id: Int
     
     init(dictionary: NSDictionary) {
         text = dictionary["text"] as? String
@@ -27,8 +30,6 @@ class Tweet: NSObject {
             dateFormatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
             dateFormatter.timeZone = NSTimeZone(name: "UTC")
             timestamp = dateFormatter.dateFromString(timestampString)
-
-            //print("now: \(dateFormatter.stringFromDate(now))")
         }
         
         let userDictionary = dictionary["user"] as! NSDictionary
@@ -36,6 +37,9 @@ class Tweet: NSObject {
         
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoriteCount = (dictionary["favorite_count"] as? Int) ?? 0
+        retweeted = (dictionary["retweeted"] as? Bool) ?? false
+        favorited = (dictionary["favorited"] as? Bool) ?? false
+        id = (dictionary["id"] as? Int) ?? 0
     }
     
     class func timestampConverter(date1: NSDate, date2: NSDate) -> String {

@@ -34,6 +34,42 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func retweet(retweeted: Bool, id: Int, success: (Bool) -> (), failure: (NSError) -> ()) {
+        if retweeted {
+            let URL = String("1.1/statuses/unretweet/\(id).json")
+            POST(URL, parameters: ["id": id], progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+                success(false)
+            }) { (task: NSURLSessionDataTask?, error: NSError) in
+                failure(error)
+            }
+        } else {
+            let URL = String("1.1/statuses/retweet/\(id).json")
+            POST(URL, parameters: ["id": id], progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+                success(true)
+            }) { (task: NSURLSessionDataTask?, error: NSError) in
+                failure(error)
+            }
+        }
+    }
+    
+    func favorite(favorited: Bool, id: Int, success: (Bool) -> (), failure: (NSError) -> ()) {
+        if favorited {
+            let URL = String("1.1/favorites/destroy.json?id=\(id)")
+            POST(URL, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+                success(false)
+            }) { (task: NSURLSessionDataTask?, error: NSError) in
+                failure(error)
+            }
+        } else {
+            let URL = String("1.1/favorites/create.json?id=\(id)")
+            POST(URL, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+                success(true)
+            }) { (task: NSURLSessionDataTask?, error: NSError) in
+                failure(error)
+            }
+        }
+    }
+    
     var loginSuccess: (() -> ())?
     var loginFailure: (NSError ->())?
     
