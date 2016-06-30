@@ -27,24 +27,28 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if user == nil {
-            TwitterClient.sharedInstance.currentAccount({ (account: User) in
-                self.user = account
-                self.setUI()
-            }, failure: { (error: NSError) in
-                    print(error.localizedDescription)
-            })
-        } else {
-            self.setUI()
-        }
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         
-        query()
+        // Initialize a UIRefreshControl
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(query(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
+        if user == nil {
+            TwitterClient.sharedInstance.currentAccount({ (account: User) in
+                self.user = account
+                self.setUI()
+                self.query()
+            }, failure: { (error: NSError) in
+                    print(error.localizedDescription)
+            })
+        } else {
+            self.setUI()
+            query()
+        }
     }
     
     func setUI() {
@@ -154,8 +158,9 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func query(refreshControl: UIRefreshControl? = nil) {
         
-        TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) in
-            
+        let username = user!.screenname
+        
+        TwitterClient.sharedInstance.userTweets(String(username!), success: { (tweets: [Tweet]) in
             self.tweets = tweets
             self.now = NSDate()
             
@@ -165,9 +170,9 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let refreshControl = refreshControl {
                 refreshControl.endRefreshing()
             }
-            
         }) { (error: NSError) in
             print(error.localizedDescription)
+
         }
     }
     

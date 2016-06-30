@@ -835,16 +835,16 @@
                                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpg-r9-TXK">
-                                                <rect key="frame" x="99" y="214" width="25" height="25"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpg-r9-TXK">
+                                                <rect key="frame" x="100" y="214" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="0Tl-mm-nFE"/>
                                                     <constraint firstAttribute="height" constant="25" id="1pW-5j-ul5"/>
                                                 </constraints>
                                                 <state key="normal" title="Share Button" image="sharesmall"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSw-3p-FSq">
-                                                <rect key="frame" x="249" y="214" width="20" height="25"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSw-3p-FSq">
+                                                <rect key="frame" x="250" y="214" width="20" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="8DW-EL-UHu"/>
                                                     <constraint firstAttribute="width" constant="20" id="Yc1-OM-ikj"/>
@@ -855,8 +855,8 @@
                                                     <action selector="onFavoriteButton:" destination="uBQ-vq-NiQ" eventType="touchUpInside" id="yCu-Ma-0dP"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amt-Y4-sCN">
-                                                <rect key="frame" x="174" y="214" width="25" height="25"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amt-Y4-sCN">
+                                                <rect key="frame" x="175" y="214" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="vM6-oJ-U0z"/>
                                                     <constraint firstAttribute="width" constant="25" id="zWF-N7-t25"/>
@@ -924,11 +924,6 @@
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="biO-Pr-BFv">
-                                                <rect key="frame" x="0.0" y="249" width="375" height="305"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="sectionIndexBackgroundColor" red="0.89709535259999995" green="0.89709535259999995" blue="0.89709535259999995" alpha="1" colorSpace="calibratedRGB"/>
-                                            </tableView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="amt-Y4-sCN" firstAttribute="leading" secondItem="jpg-r9-TXK" secondAttribute="trailing" constant="50" id="0yQ-Ug-7wf"/>
