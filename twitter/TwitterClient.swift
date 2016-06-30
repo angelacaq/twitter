@@ -70,6 +70,16 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    func tweet(tweet: String, success: () ->(), failure: (NSError) -> ()) {
+        let URL = String("https://api.twitter.com/1.1/statuses/update.json?status=\(tweet)")
+        let comboURL = URL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        POST(comboURL, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+            success()
+        }) { (task: NSURLSessionDataTask?, error: NSError) in
+            failure(error)
+        }
+    }
+    
     var loginSuccess: (() -> ())?
     var loginFailure: (NSError ->())?
     

@@ -31,6 +31,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         query()
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("detailsSegue", sender: self)
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tweets = tweets {
             return tweets.count
@@ -169,7 +173,16 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let userViewController = segue.destinationViewController as! UserViewController
             userViewController.user = tweet.user
+        } else if segue.identifier == "detailsSegue" {
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            let tweet = tweets![indexPath!.section]
+            
+            let detailViewController = segue.destinationViewController as! DetailsViewController
+            detailViewController.tweet = tweet
+            
         }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

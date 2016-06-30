@@ -82,6 +82,7 @@ class UserViewController: UIViewController {
             return String(newVal)
         }
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
