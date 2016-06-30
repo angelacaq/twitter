@@ -31,10 +31,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         query()
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("detailsSegue", sender: self)
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tweets = tweets {
             return tweets.count
