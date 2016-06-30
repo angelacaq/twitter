@@ -31,11 +31,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         query()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        self.viewDidLoad()
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tweets = tweets {
             return tweets.count

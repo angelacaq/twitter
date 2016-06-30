@@ -8,10 +8,13 @@
 
 import UIKit
 
-class UserViewController: UIViewController {
+class UserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var user:User?
+    var tweets: [Tweet]?
+    var now: NSDate?
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var screennameLabel: UILabel!
@@ -28,7 +31,6 @@ class UserViewController: UIViewController {
         if user == nil {
             TwitterClient.sharedInstance.currentAccount({ (account: User) in
                 self.user = account
-                print("whoops")
                 self.setUI()
             }, failure: { (error: NSError) in
                     print(error.localizedDescription)
@@ -37,6 +39,12 @@ class UserViewController: UIViewController {
             self.setUI()
         }
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        
+        query()
     }
     
     func setUI() {
@@ -80,6 +88,86 @@ class UserViewController: UIViewController {
         } else {
             let newVal = NSString(format: "%.0f", value)
             return String(newVal)
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let tweets = tweets {
+            return tweets.count
+        }
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserTweetsTableViewCell", forIndexPath: indexPath) as! UserTweetsTableViewCell
+        let tweet = tweets![indexPath.row]
+        cell.avatarButton.tag = indexPath.row
+        
+        cell.tweetLabel.text = String(tweet.text!)
+        
+        let username = tweet.user!.screenname
+        cell.usernameLabel.text = String("@\(username!)")
+        
+        cell.screenameLabel.text = String(tweet.user!.name!)
+        
+        let timestamp = Tweet.timestampConverter(tweet.timestamp!, date2: now!)
+        cell.timestampLabel.text = timestamp
+        
+        if let url = tweet.user!.profileURL {
+            if let imageView = cell.avatarImage {
+                imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            }
+            
+            cell.avatarImage.setImageWithURL(url)
+        }
+        
+        if tweet.retweetCount > 0 {
+            cell.retweetCountLabel.text = String(tweet.retweetCount)
+        } else {
+            cell.retweetCountLabel.text = ""
+        }
+        
+        if tweet.retweeted {
+            cell.retweetButton.setImage(UIImage(named: "retweetgreen1small"), forState: UIControlState.Normal)
+        } else {
+            cell.retweetButton.setImage(UIImage(named: "retweet1small"), forState: UIControlState.Normal)
+        }
+        
+        cell.retweetButton.tag = indexPath.row
+        
+        if tweet.favoriteCount > 0 {
+            cell.favoriteCountLabel.text = String(tweet.favoriteCount)
+        } else {
+            cell.favoriteCountLabel.text = ""
+        }
+        
+        if tweet.favorited {
+            cell.favoriteButton.setImage(UIImage(named: "heartred1small"), forState: UIControlState.Normal)
+        } else {
+            cell.favoriteButton.setImage(UIImage(named: "heart1small"), forState: UIControlState.Normal)
+        }
+        
+        cell.favoriteButton.tag = indexPath.row
+        
+        return cell
+    }
+    
+    func query(refreshControl: UIRefreshControl? = nil) {
+        
+        TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) in
+            
+            self.tweets = tweets
+            self.now = NSDate()
+            
+            // Reload the tableView now that there is new data
+            self.tableView.reloadData()
+            
+            if let refreshControl = refreshControl {
+                refreshControl.endRefreshing()
+            }
+            
+        }) { (error: NSError) in
+            print(error.localizedDescription)
         }
     }
     
