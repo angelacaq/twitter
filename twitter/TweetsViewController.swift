@@ -134,6 +134,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print(error.localizedDescription)
         }
     }
+    
     @IBAction func onLogoutButton(sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
     }
@@ -172,7 +173,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else if segue.identifier == "detailsSegue" {
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)
-            let tweet = tweets![indexPath!.section]
+            let tweet = tweets![indexPath!.row]
             
             let detailViewController = segue.destinationViewController as! DetailsViewController
             detailViewController.tweet = tweet

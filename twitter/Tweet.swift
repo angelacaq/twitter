@@ -42,8 +42,6 @@ class Tweet: NSObject {
         id = (dictionary["id"] as? Int) ?? 0
     }
     
-    
-    
     class func timestampConverter(date1: NSDate, date2: NSDate) -> String {
         let minuteInSeconds: Int =  60
         let hourInSeconds: Int = 3600
