@@ -32,15 +32,30 @@ class User: NSObject {
         let profileURLString = smallPhoto!.stringByReplacingOccurrencesOfString("_normal", withString: "")
         profileURL = NSURL(string: profileURLString)
         
+        /*TwitterClient.sharedInstance.profileBanner(String(screenname!), success: { (URL: String) in
+            headerURL = NSURL(string: URL)
+        }) { (error: NSError) in
+                print(error)
+        }*/
+        
+        /*print("before header")
         let headerPhoto = dictionary["profile_background_image_url"] as? String
-        headerURL = NSURL(string: headerPhoto!)
+        headerURL = NSURL(string: headerPhoto!)*/
         
         followerCount = dictionary["followers_count"] as! Double
         followingCount = dictionary["friends_count"] as! Double
         tweetCount = dictionary["statuses_count"] as! Double
-        
         tagline = dictionary["description"] as? String
     }
+    
+    class func getHeaderURL(user: User, success: (NSURL) -> (), failure: (NSError) -> ()) {
+        TwitterClient.sharedInstance.profileBanner(String(user.screenname!), success: { (URL: String) in
+            success(NSURL(string: URL)!)
+        }) { (error: NSError) in
+            failure(error)
+        }
+    }
+    
     static var _currentUser: User?
     
     class var currentUser: User? {

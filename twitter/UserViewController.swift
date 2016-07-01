@@ -61,7 +61,6 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         followerCountLabel.text = countConversion(user!.followerCount)
         tweetCountLabel.text = countConversion(user!.tweetCount)
         
-        
         if let url = user!.profileURL {
             if let imageView = avatarImageView {
                 imageView.contentMode = UIViewContentMode.ScaleAspectFill
@@ -71,12 +70,16 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             avatarImageView.layer.borderColor = UIColor.whiteColor().CGColor
         }
         
-        if let url = user!.headerURL {
-            if let imageView = headerImageView {
+        User.getHeaderURL(user!, success: { (url: NSURL) in
+            if let imageView = self.headerImageView {
                 imageView.contentMode = UIViewContentMode.ScaleAspectFill
             }
-            headerImageView.setImageWithURL(url)
+            self.headerImageView.setImageWithURL(url)
+        }) { (error: NSError) in
+            print(error.localizedDescription)
         }
+        
+        
     }
     
     func countConversion(value: Double) -> String {
