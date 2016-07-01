@@ -8,12 +8,14 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var tweets: [Tweet]?
     var now: NSDate?
+    var isMoreDataLoading = false
+    var queryLimit: Int = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,9 +141,27 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         TwitterClient.sharedInstance.logout()
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = (scrollViewContentHeight - tableView.bounds.size.height) * 0.9
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+                
+                isMoreDataLoading = true
+                
+                // Code to load more results
+                query()
+            }
+        }
+    }
+    
     func query(refreshControl: UIRefreshControl? = nil) {
+        print(self.queryLimit)
         
-        TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) in
+        TwitterClient.sharedInstance.homeTimeline(self.queryLimit, success: { (tweets: [Tweet]) in
             
             self.tweets = tweets
             self.now = NSDate()
@@ -149,8 +169,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // Reload the tableView now that there is new data
             self.tableView.reloadData()
             
+            if refreshControl == nil {
+                 self.queryLimit += 20
+            }
+            
             if let refreshControl = refreshControl {
                 refreshControl.endRefreshing()
+            } else {
+                self.isMoreDataLoading = false
             }
             
         }) { (error: NSError) in

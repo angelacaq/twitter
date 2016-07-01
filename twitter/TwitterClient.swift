@@ -13,8 +13,8 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     static let sharedInstance = TwitterClient(baseURL: NSURL(string: "https://api.twitter.com")!, consumerKey: "nQRWMOHu0PkyKxntrQLkDbZfc", consumerSecret: "SqGY2aZI2N79gLtEcwnyk7IHyxyHXpzwmDu2iloj2tQXFwdiRI")
     
-    func homeTimeline(success: ([Tweet]) -> (), failure: (NSError) -> ()) {
-        GET("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+    func homeTimeline(count: Int, success: ([Tweet]) -> (), failure: (NSError) -> ()) {
+        GET("1.1/statuses/home_timeline.json", parameters: ["count": count], progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
             
             let dictionaries = response as! [NSDictionary]
             let tweets = Tweet.tweetsWithArray(dictionaries)

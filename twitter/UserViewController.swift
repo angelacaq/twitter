@@ -156,6 +156,8 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    
+    
     func query(refreshControl: UIRefreshControl? = nil) {
         
         let username = user!.screenname

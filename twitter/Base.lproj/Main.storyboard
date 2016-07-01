@@ -210,9 +210,9 @@
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="AiX-4E-JdB"/>
                                                             <exclude reference="MR7-eS-f7j"/>
                                                             <exclude reference="gow-Y4-Qad"/>
-                                                            <exclude reference="AiX-4E-JdB"/>
                                                         </mask>
                                                     </variation>
                                                 </label>
@@ -229,10 +229,10 @@
                                                     <state key="normal" title="Share Button" image="sharesmall"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="IZf-IN-mDT"/>
-                                                            <exclude reference="q7W-Ug-NXp"/>
-                                                            <exclude reference="YyD-Js-dGm"/>
                                                             <exclude reference="FOf-Y4-eNN"/>
+                                                            <exclude reference="IZf-IN-mDT"/>
+                                                            <exclude reference="YyD-Js-dGm"/>
+                                                            <exclude reference="q7W-Ug-NXp"/>
                                                         </mask>
                                                     </variation>
                                                 </button>
@@ -339,8 +339,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="q0d-wd-b28"/>
                                                     <exclude reference="d2B-DD-yFi"/>
+                                                    <exclude reference="q0d-wd-b28"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -560,7 +560,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="87" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ucB-NL-iLo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TweetsTableViewCell" rowHeight="87" id="T7I-hF-OYr" customClass="TweetsTableViewCell" customModule="twitter" customModuleProvider="target">
@@ -750,7 +750,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Cze-WR-4bz" firstAttribute="top" secondItem="ucB-NL-iLo" secondAttribute="bottom" id="72g-zn-bAf"/>
+                            <constraint firstItem="Cze-WR-4bz" firstAttribute="top" secondItem="ucB-NL-iLo" secondAttribute="bottom" constant="-49" id="72g-zn-bAf"/>
                             <constraint firstItem="ucB-NL-iLo" firstAttribute="top" secondItem="eaE-eA-t3N" secondAttribute="top" id="gxE-Iu-VwN"/>
                             <constraint firstAttribute="trailing" secondItem="ucB-NL-iLo" secondAttribute="trailing" id="jY6-GA-fFE"/>
                             <constraint firstItem="ucB-NL-iLo" firstAttribute="leading" secondItem="eaE-eA-t3N" secondAttribute="leading" id="sf6-vb-fK2"/>
