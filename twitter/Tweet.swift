@@ -55,15 +55,16 @@ class Tweet: NSObject {
         let calendar = NSCalendar.currentCalendar()
         let datecomponent = calendar.components(NSCalendarUnit.NSSecondCalendarUnit, fromDate: date1, toDate: date2, options: NSCalendarOptions.MatchStrictly)
         let seconds = datecomponent.second
+        print(seconds)
         
         if seconds / yearInSeconds > 0 {
             return String("\(seconds / yearInSeconds)y")
         } else if seconds / weekInSeconds > 0 {
             return String("\(seconds / weekInSeconds)w")
-        } else if seconds / hourInSeconds > 0 {
-            return String("\(seconds / hourInSeconds)d")
         } else if seconds / dayInSeconds > 0 {
             return String("\(seconds / dayInSeconds)d")
+        } else if seconds / hourInSeconds > 0 {
+            return String("\(seconds / hourInSeconds)h")
         } else if seconds / minuteInSeconds > 0 {
             return String("\(seconds / minuteInSeconds)m")
         } else {

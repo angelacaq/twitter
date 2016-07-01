@@ -25,6 +25,16 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         
+        
+        let image = UIImage(named: "mainicon2")
+        self.navigationItem.titleView = UIImageView(image: image)
+        self.navigationItem.titleView?.contentMode = .ScaleAspectFit
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
+
+       
+        /*UIImage *image = [UIImage imageNamed:@"image.png"];
+        self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];*/
+        
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(query(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -145,7 +155,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if (!isMoreDataLoading) {
             // Calculate the position of one screen length before the bottom of the results
             let scrollViewContentHeight = tableView.contentSize.height
-            let scrollOffsetThreshold = (scrollViewContentHeight - tableView.bounds.size.height) * 0.9
+            let scrollOffsetThreshold = (scrollViewContentHeight - tableView.bounds.size.height) * 0.8
             
             // When the user has scrolled past the threshold, start requesting
             if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
@@ -159,8 +169,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func query(refreshControl: UIRefreshControl? = nil) {
-        print(self.queryLimit)
-        
         TwitterClient.sharedInstance.homeTimeline(self.queryLimit, success: { (tweets: [Tweet]) in
             
             self.tweets = tweets
