@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ComposeViewController: UIViewController {
+class ComposeViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tweetTextView: UITextView!
     @IBOutlet weak var wordcountLabel: UILabel!
     @IBOutlet weak var buttonBottomLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var characterCountLabel: UILabel!
     
     var originalHeight: CGFloat!
     var originalLandscapeHeight: CGFloat!
@@ -20,10 +21,9 @@ class ComposeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UIApplication.sharedApplication().statusBarOrientation == UIInterfaceOrientation.Portrait { print("huh") }
-        
         originalHeight = self.view.frame.height
         originalLandscapeHeight = self.view.frame.width
+        tweetTextView.delegate = self
         
         setupKeyboardObservers()
     }
@@ -32,6 +32,13 @@ class ComposeViewController: UIViewController {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let newLength = textView.text.utf16.count + text.utf16.count - range.length
+
+        wordcountLabel.text =  String(140 - newLength)
+        return newLength < 140 // To just allow up to 140 characters
     }
     
     func setupKeyboardObservers() {
@@ -55,6 +62,8 @@ class ComposeViewController: UIViewController {
         }
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -74,42 +83,6 @@ class ComposeViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-    
-    /*func keyboardWillShow(notification: NSNotification) {
-        if UIApplication.sharedApplication().statusBarOrientation == UIInterfaceOrientation.Portrait {
-            print("yay")
-            if view.frame.height == originalHeight {
-                print("yay2")
-                if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                    print("yy3")
-                    view.frame = CGRectMake(0 , 0, self.view.frame.width, originalHeight - keyboardSize.height)
-                }
-            }
-        } else {
-            if view.frame.height == originalLandscapeHeight {
-                if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                    view.frame = CGRectMake(0 , 0, self.view.frame.width, originalLandscapeHeight - keyboardSize.height)
-                }
-            }
-        }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if UIApplication.sharedApplication().statusBarOrientation == UIInterfaceOrientation.Portrait {
-            if view.frame.height != originalHeight {
-                if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                    view.frame = CGRectMake(0 , 0, self.view.frame.width, originalHeight + keyboardSize.height)
-                }
-            }
-        } else {
-            if view.frame.height != originalLandscapeHeight {
-                if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                    view.frame = CGRectMake(0 , 0, self.view.frame.width, originalLandscapeHeight + keyboardSize.height)
-                    
-                }
-            }
-        }
-    }*/
     
     /*
      // MARK: - Navigation

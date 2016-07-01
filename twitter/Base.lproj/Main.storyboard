@@ -541,6 +541,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="buttonBottomLayoutConstraint" destination="Gyl-Wo-hkn" id="xWs-L5-YSm"/>
+                        <outlet property="characterCountLabel" destination="9e0-9c-HdJ" id="CAJ-Mf-q06"/>
                         <outlet property="tweetTextView" destination="uMS-wk-1Aq" id="e44-qK-GAt"/>
                         <outlet property="wordcountLabel" destination="9e0-9c-HdJ" id="eqN-uI-8N7"/>
                     </connections>
