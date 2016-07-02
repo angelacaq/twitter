@@ -49,16 +49,12 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
--[Landscape](https://youtu.be/flqjzXSkfVY) - includes links
--[Portrait](https://youtu.be/5THn67ng6WU) - includes user profiles
-
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-
+- [Landscape](https://youtu.be/flqjzXSkfVY) - includes links
+- [Portrait](https://youtu.be/5THn67ng6WU) - includes user profiles
 
 ## Notes
 
-This app had a lot of tiny features to implement that took a lot of time. Once more, I wish I had a little more time to implement the features I want/fix some bugs/made my code A LOT cleaner, but I'm happy with the product, and I can't believe I made it with only three weeks of instruction!
+This app had a lot of tiny features to implement that took a lot of time. I was happy with most of my autolayout and developed a solid understanding of how to use it. Once more, I wish I had a little more time to implement the features I want/fix some bugs/made my code A LOT cleaner, but I'm happy with the product, and I can't believe I made it with only three weeks of instruction!
 
 ## Credits
 
