@@ -2,7 +2,7 @@
 
 **Twitter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **10** hours spent in total
+Time spent: **24** hours spent in total
 
 ## User Stories
 
@@ -32,7 +32,7 @@ The following **optional** features are implemented:
 - [X] When composing, you should have a countdown in the upper right for the tweet limit.
 - [ ] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
 - [ ] User can reply to any tweet, and replies should be prefixed with the username and the reply_id should be set when posting the tweet
-- [ ] Links in tweets are clickable
+- [X] Links in tweets are clickable
 - [X] User can switch between timeline, mentions, or profile view through a tab bar
 - [ ] Pulling down the profile page should blur and resize the header image.
 
@@ -42,20 +42,23 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. How did you view new tweets on timeline without taking up client space?
+2. How do you make links the color you want it to be?
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
+-[Landscape](https://youtu.be/flqjzXSkfVY) - includes links
+-[Portrait](https://youtu.be/5THn67ng6WU) - includes user profiles
+
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+This app had a lot of tiny features to implement that took a lot of time. Once more, I wish I had a little more time to implement the features I want/fix some bugs/made my code A LOT cleaner, but I'm happy with the product, and I can't believe I made it with only three weeks of instruction!
 
 ## Credits
 
