@@ -288,6 +288,7 @@
                                                     </constraints>
                                                     <state key="normal" title="Retweet Button" image="retweet1small"/>
                                                     <connections>
+                                                        <action selector="onRetweetButton:" destination="JpI-t6-RQK" eventType="touchUpInside" id="3D4-nS-iyS"/>
                                                         <action selector="onRetweetButton:" destination="ajO-Da-wg6" eventType="touchUpInside" id="V6I-kE-arS"/>
                                                     </connections>
                                                 </button>
@@ -299,6 +300,7 @@
                                                     </constraints>
                                                     <state key="normal" title="Heart Button" image="heart1small"/>
                                                     <connections>
+                                                        <action selector="onFavoriteButton:" destination="JpI-t6-RQK" eventType="touchUpInside" id="U58-8j-PTe"/>
                                                         <action selector="onFavoriteButton:" destination="ajO-Da-wg6" eventType="touchUpInside" id="mE2-Gv-rIp"/>
                                                     </connections>
                                                 </button>
@@ -589,6 +591,40 @@
             </objects>
             <point key="canvasLocation" x="1242.5" y="1031.5"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="EqD-5S-gmo">
+            <objects>
+                <viewController id="iZp-ML-KeM" customClass="WebViewController" customModule="twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dK8-ts-Kky"/>
+                        <viewControllerLayoutGuide type="bottom" id="awQ-S6-Yvb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rLJ-UV-nre">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7e5-xw-y6Z">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7e5-xw-y6Z" secondAttribute="trailing" id="UWf-r6-vUj"/>
+                            <constraint firstItem="awQ-S6-Yvb" firstAttribute="top" secondItem="7e5-xw-y6Z" secondAttribute="bottom" constant="-49" id="cux-DJ-u0i"/>
+                            <constraint firstItem="7e5-xw-y6Z" firstAttribute="leading" secondItem="rLJ-UV-nre" secondAttribute="leading" id="uFV-8K-KAc"/>
+                            <constraint firstItem="7e5-xw-y6Z" firstAttribute="top" secondItem="rLJ-UV-nre" secondAttribute="top" id="vTn-MV-cHH"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="webView" destination="7e5-xw-y6Z" id="SVx-qd-fDJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I9E-Wn-Goz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734.5" y="-849.5"/>
+        </scene>
         <!--Twitter-->
         <scene sceneID="QqJ-ha-RDl">
             <objects>
@@ -624,7 +660,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="999" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2w-cg-DDd">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="999" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2w-cg-DDd" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="76" y="27" width="285" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="1ov-bk-c93"/>
@@ -816,6 +852,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="ucB-NL-iLo" id="Zxo-BK-0wo"/>
+                        <segue destination="iZp-ML-KeM" kind="show" identifier="webSegue" id="lVH-6I-lL7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMc-gV-Aqd" userLabel="First Responder" sceneMemberID="firstResponder"/>

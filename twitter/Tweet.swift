@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AFDateHelper
 
 class Tweet: NSObject {
     
@@ -39,9 +38,16 @@ class Tweet: NSObject {
         }
         
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
-        favoriteCount = (dictionary["favorite_count"] as? Int) ?? 0
+        
         retweeted = (dictionary["retweeted"] as? Bool) ?? false
         favorited = (dictionary["favorited"] as? Bool) ?? false
+
+        if let retweetedTweet = dictionary["retweeted_status"] as? NSDictionary {
+            favoriteCount = (retweetedTweet["favorite_count"] as? Int) ?? 0
+        } else {
+            favoriteCount = (dictionary["favorite_count"] as? Int) ?? 0
+        }
+        
         id = (dictionary["id"] as? Int) ?? 0
     }
     
@@ -55,7 +61,6 @@ class Tweet: NSObject {
         let calendar = NSCalendar.currentCalendar()
         let datecomponent = calendar.components(NSCalendarUnit.NSSecondCalendarUnit, fromDate: date1, toDate: date2, options: NSCalendarOptions.MatchStrictly)
         let seconds = datecomponent.second
-        print(seconds)
         
         if seconds / yearInSeconds > 0 {
             return String("\(seconds / yearInSeconds)y")

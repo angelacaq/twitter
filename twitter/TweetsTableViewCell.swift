@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import TTTAttributedLabel
 
-class TweetsTableViewCell: UITableViewCell {
+class TweetsTableViewCell: UITableViewCell, TTTAttributedLabelDelegate {
 
     @IBOutlet weak var screenameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
-    @IBOutlet var tweetLabel: UILabel!
+    @IBOutlet var tweetLabel: TTTAttributedLabel!
     @IBOutlet var avatarButton: UIButton!
     @IBOutlet var avatarImage: UIImageView!
     @IBOutlet weak var retweetCountLabel: UILabel!

@@ -82,6 +82,44 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    @IBAction func onRetweetButton(sender: AnyObject) {
+        let retweetButton = sender as! UIButton
+        let tweet = tweets![retweetButton.tag]
+        let id = Int(tweet.id)
+        
+        TwitterClient.sharedInstance.retweet(tweet.retweeted, id: id, success: { (retweeted: Bool) in
+            if retweeted {
+                tweet.retweetCount += 1
+                tweet.retweeted = true
+            } else {
+                tweet.retweetCount -= 1
+                tweet.retweeted = false
+            }
+            self.tableView.reloadData()
+        }) { (error: NSError) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    @IBAction func onFavoriteButton(sender: AnyObject) {
+        let favoriteButton = sender as! UIButton
+        let tweet = tweets![favoriteButton.tag]
+        let id = Int(tweet.id)
+        
+        TwitterClient.sharedInstance.favorite(tweet.favorited, id: id, success: { (favorited: Bool) in
+            if favorited {
+                tweet.favoriteCount += 1
+                tweet.favorited = true
+            } else {
+                tweet.favoriteCount -= 1
+                tweet.favorited = false
+            }
+            self.tableView.reloadData()
+        }) { (error: NSError) in
+            print(error.localizedDescription)
+        }
+    }
+    
     func countConversion(value: Double) -> String {
         let MILLION = 1000000 as Double
         let THOUSAND = 1000 as Double

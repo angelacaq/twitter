@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import TTTAttributedLabel
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, TTTAttributedLabelDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,15 +26,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         
-        
         let image = UIImage(named: "mainicon2")
         self.navigationItem.titleView = UIImageView(image: image)
         self.navigationItem.titleView?.contentMode = .ScaleAspectFit
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
-
-       
-        /*UIImage *image = [UIImage imageNamed:@"image.png"];
-        self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];*/
         
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
@@ -50,12 +46,32 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return 0
     }
     
+    func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+        self.performSegueWithIdentifier("webSegue", sender: label)
+        //UIApplication.sharedApplication().openURL(url)
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetsTableViewCell", forIndexPath: indexPath) as! TweetsTableViewCell
         let tweet = tweets![indexPath.row]
         cell.avatarButton.tag = indexPath.row
         
         cell.tweetLabel.text = String(tweet.text!)
+        cell.tweetLabel.delegate = self
+        
+        let string = String(cell.tweetLabel.text!)
+        if let http = string.rangeOfString("https") {
+            let fromHTTP = string.substringFromIndex((http.startIndex))
+            
+            let indexOfSpace = fromHTTP.characters.indexOf(" ") ?? fromHTTP.endIndex
+            let finalRange = fromHTTP.startIndex..<indexOfSpace
+            let urlString = fromHTTP.substringWithRange(finalRange)
+            
+            let mainString = string as NSString
+            let range = mainString.rangeOfString(urlString)
+            let URL = NSURL(string: urlString)
+            cell.tweetLabel.addLinkToURL(URL, withRange: range)
+        }
         
         let username = tweet.user!.screenname
         cell.usernameLabel.text = String("@\(username!)")
@@ -191,8 +207,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print(error.localizedDescription)
         }
     }
-
-
     
     // MARK: - Navigation
 
@@ -212,6 +226,20 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let detailViewController = segue.destinationViewController as! DetailsViewController
             detailViewController.tweet = tweet
             
+        } else if segue.identifier == "webSegue" {
+            let label = sender as! TTTAttributedLabel
+            
+            let detailViewController = segue.destinationViewController as! WebViewController
+            
+            let string = String(label.text!)
+            if let http = string.rangeOfString("https") {
+                let fromHTTP = string.substringFromIndex((http.startIndex))
+                
+                let indexOfSpace = fromHTTP.characters.indexOf(" ") ?? fromHTTP.endIndex
+                let finalRange = fromHTTP.startIndex..<indexOfSpace
+                let urlString = fromHTTP.substringWithRange(finalRange)
+                detailViewController.URL = NSURL(string: urlString)
+            }
         }
         
         // Get the new view controller using segue.destinationViewController.
